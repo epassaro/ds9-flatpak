@@ -18,7 +18,6 @@ modules:
         tag: v8.5
 finish-args:
   - --share=ipc
-  - --socket=fallback-x11
-  - --socket=wayland
+  - --socket=x11
   - --share=network
   - --filesystem=home
