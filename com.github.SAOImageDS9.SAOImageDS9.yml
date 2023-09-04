@@ -10,7 +10,7 @@ modules:
       - sed -i 's/tclsh/$(TCLSH_PROG)/' ds9/make.include  # See: https://github.com/SAOImageDS9/SAOImageDS9/issues/134
       - ./unix/configure
       - make
-      - install -m 755 -D bin/ds9 /app/ds9
+      - install -m 755 -D bin/ds9 /app/bin/ds9
       - ls -R /app
     sources:
       - type: git
