@@ -1,0 +1,36 @@
+name: ci
+
+on:
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - 'README.md'
+
+  workflow_dispatch:  # manual trigger
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Install build dependencies
+        run: sudo apt update && sudo apt install flatpak-builder
+
+      - name: Add Flathub repository
+        run: flatpak remote-add --user --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+
+      - name: Install runtime and SDK
+        run: flatpak install --user flathub org.freedesktop.Platform//22.08 org.freedesktop.Sdk//22.08 -y
+
+      - name: Build package
+        run: flatpak-builder --force-clean build_dir com.github.SAOImageDS9.SAOImageDS9.yml
+      
+      - name: Install package
+        run: flatpak-builder --user --install --force-clean build_dir com.github.SAOImageDS9.SAOImageDS9.yml
+
+      - name: Test package
+        run: flatpak run com.github.SAOImageDS9.SAOImageDS9 -h
