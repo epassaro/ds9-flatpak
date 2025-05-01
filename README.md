@@ -34,5 +34,6 @@ I began this project primarily for research purposes because I've been wanting t
 I decided to start with DS9 because it's a piece of software I'm familiar with, and it's relatively easy to build.
 
 ## See also
+- [PackagingLab](https://epassaro.github.io/packaginglab) - Project website 
 - [ds9-appimage](https://github.com/epassaro/ds9-appimage) - My DS9 builds in the AppImage format
 - [ds9-feedstock](https://github.com/conda-forge/ds9-feedstock) - My conda-forge recipe for DS9
